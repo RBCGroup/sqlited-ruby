@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["hama_du"]
   spec.email         = ["dercll1020@gmail.com"]
 
-  spec.summary       = "Yet another sqlite3 driver. Just for learning myself."
-  spec.description   = "Yet another sqlite3 driver. Just for learning myself."
+  spec.summary       = "Yet another SQLite database driver. Just for self-study."
+  spec.description   = "Yet another SQLite database driver. Just for self-study."
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
