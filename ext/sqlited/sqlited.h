@@ -7,4 +7,3 @@ struct _sqlitedRuby {
 };
 
 typedef struct _sqlitedRuby sqlitedRuby;
-typedef sqlitedRuby *sqlitedRubyPtr;

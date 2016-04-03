@@ -1,4 +1,4 @@
 require 'sqlited'
 
-lited = Sqlited.new('ho!')
-p lited.file_path
+lited = Sqlited.new('pyon.db')
+lited.close

@@ -1,5 +1,8 @@
 require 'mkmf'
 
+find_header('sqlite3.h')
+find_library('sqlite3', 'sqlite3_libversion_number')
+
 create_makefile("sqlited/sqlited")
 
 # # :stopdoc:
