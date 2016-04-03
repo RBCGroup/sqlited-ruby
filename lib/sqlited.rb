@@ -1,4 +1,6 @@
 require "sqlited/version"
+require "sqlited/sqlited"
 
-module Sqlited
+class Sqlited
+  attr_accessor :file_path
 end
