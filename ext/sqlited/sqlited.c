@@ -9,7 +9,6 @@ static VALUE sqlited_initialize(VALUE file_path, VALUE self) {
 }
 
 void Init_sqlited(void) {
-  printf("hoge\n");
   cSqlited = rb_define_class("Sqlited", rb_cObject);
   rb_define_method(cSqlited, "initialize", sqlited_initialize, 1);
 }
