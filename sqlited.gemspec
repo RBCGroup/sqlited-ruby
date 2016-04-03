@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Yet another SQLite database driver. Just for self-study."
   spec.description   = "Yet another SQLite database driver. Just for self-study."
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = ""
   spec.license       = "MIT"
   spec.extensions    = %w[ext/sqlited/extconf.rb]
 
@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake-compiler"
 end
