@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <ruby.h>
-#include <sqlite3.h>
+#include "sqlited.h"
 
 static VALUE initialize(VALUE file_path, VALUE self) {
   sqlitedRubyPtr ctx;
