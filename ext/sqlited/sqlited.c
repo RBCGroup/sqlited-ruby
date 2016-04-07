@@ -12,6 +12,26 @@ static VALUE sqlited_initialize(VALUE self, VALUE file_path) {
   return self;
 }
 
+static VALUE sqlited_exec(VALUE self, VALUE sql) {
+  sqlitedRuby *ctx;
+  int status;
+  char *errMsg = NULL;
+
+  Data_Get_Struct(self, sqlitedRuby, ctx);
+
+  status = sqlite3_exec(
+    ctx->db,
+    (const char *)StringValuePtr(sql),
+    NULL,
+    NULL,
+    &errMsg
+  );
+  if (!status) {
+    // TODO: err
+  }
+  return self;
+}
+
 static VALUE sqlited_prepare_sql(VALUE self, VALUE sql) {
   sqlitedRuby *ctx;
   const char *tail = NULL;
@@ -117,6 +137,7 @@ void Init_sqlited(void) {
 
   rb_define_alloc_func(cSqlited, allocate);
   rb_define_method(cSqlited, "initialize",   sqlited_initialize, 1);
+  rb_define_method(cSqlited, "exec",         sqlited_exec, 1);
   rb_define_method(cSqlited, "prepare_sql",  sqlited_prepare_sql, 1);
   rb_define_method(cSqlited, "step",         sqlited_step, 0);
   rb_define_method(cSqlited, "close",        sqlited_close, 0);
