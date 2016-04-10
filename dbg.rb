@@ -2,8 +2,7 @@ require 'sqlited'
 
 lited = Sqlited.new('pyon.db')
 
-lited.prepare_sql('CREATE TABLE IF NOT EXISTS user(id integer primary key, name text)')
-result = lited.step
+lited.sqlited_exec('CREATE TABLE IF NOT EXISTS user(id integer primary key, name text)')
 
 p "name?"
 your_name = gets.chomp
