@@ -2,19 +2,21 @@ require 'sqlited'
 
 lited = Sqlited.new('pyon.db')
 
-lited.sqlited_exec('CREATE TABLE IF NOT EXISTS user(id integer primary key, name text)')
+lited.exec('CREATE TABLE IF NOT EXISTS user(id integer primary key, name text)')
 
 p "name?"
 your_name = gets.chomp
 
-lited.prepare_sql("INSERT INTO user(name) values('#{your_name}')")
-lited.step
+stmt = Sqlited::Statement.new(lited, "INSERT INTO user(name) values('#{your_name}')")
+stmt.step
+stmt.close
 
-lited.prepare_sql("SELECT * FROM user")
+stmt2 = Sqlited::Statement.new(lited, "SELECT * FROM user")
 while true
-  response = lited.step
+  response = stmt2.step
   break unless response
   p response
 end
+stmt2.close
 
 lited.close

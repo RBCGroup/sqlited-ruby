@@ -1,3 +1,4 @@
+#include "sqlited.h"
 #include "statement.h"
 
 VALUE cSqlitedStatement;
@@ -33,7 +34,7 @@ static VALUE sqlited_statement_initialize(VALUE self, VALUE sqlited, VALUE sql) 
     &stmt_ctx->stmt,
     &tail
   );
-  if (!status) {
+  if (status != SQLITE_OK) {
     rb_raise(rb_eRuntimeError, "failed to prepare_sql");
   }
   return self;
@@ -108,7 +109,6 @@ static VALUE sqlited_statement_close(VALUE self)
 }
 
 void init_sqlited_statement(void) {
-
   cSqlitedStatement = rb_define_class_under(cSqlited, "Statement", rb_cObject);
 
   rb_define_alloc_func(cSqlitedStatement, allocate);

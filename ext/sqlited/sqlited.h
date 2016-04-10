@@ -7,3 +7,5 @@ struct _sqlitedRuby {
 };
 
 typedef struct _sqlitedRuby sqlitedRuby;
+
+extern VALUE cSqlited;

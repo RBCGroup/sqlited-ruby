@@ -1,4 +1,5 @@
 #include "sqlited.h"
+#include "statement.h"
 
 VALUE cSqlited;
 
@@ -23,7 +24,8 @@ static VALUE sqlited_initialize(VALUE self, VALUE file_path) {
 
   status = sqlite3_open(StringValuePtr(file_path), &ctx->db);
 
-  if (!status) {
+  printf("init status : %d\n", status);
+  if (status != SQLITE_OK) {
     rb_raise(rb_eRuntimeError, "failed to initialize");
   }
   return self;
@@ -43,7 +45,9 @@ static VALUE sqlited_exec(VALUE self, VALUE sql) {
     NULL,
     &errMsg
   );
-  if (!status) {
+
+  printf("exec status : %d\n", status);
+  if (status != SQLITE_OK) {
     rb_raise(rb_eRuntimeError, "failed to exec_sql");
   }
   return self;
